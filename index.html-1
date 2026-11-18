@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RASE RUSSIA | Заявки</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+ background:#070d18;
+ color:white;
+ font-family:Arial,sans-serif;
+}
+
+header{
+ background:#0d192b;
+ border-bottom:2px solid #167aff;
+ padding:25px 15px;
+ text-align:center;
+}
+
+.logo{
+ font-size:30px;
+ font-weight:900;
+ color:#2586ff;
+ letter-spacing:4px;
+ text-shadow:0 0 15px #167aff;
+}
+
+header p{
+ color:#8199b9;
+ font-size:11px;
+ letter-spacing:4px;
+ margin-top:8px;
+}
+
+.hero{
+ padding:55px 15px;
+ text-align:center;
+ background:radial-gradient(circle at top,#123c77,#070d18 75%);
+}
+
+.hero h1{font-size:29px;margin-bottom:15px}
+.hero span{color:#328cff}
+.hero p{color:#a7b9d1;line-height:1.7}
+
+.container{
+ max-width:750px;
+ margin:30px auto;
+ padding:15px;
+}
+
+.title{
+ text-align:center;
+ font-size:22px;
+ margin-bottom:22px;
+}
+
+.cards{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:15px;
+}
+
+.card{
+ background:#101e32;
+ border:1px solid #25466e;
+ border-radius:12px;
+ padding:25px 15px;
+ text-align:center;
+ transition:.3s;
+}
+
+.card:hover{
+ border-color:#2586ff;
+ transform:translateY(-3px);
+}
+
+.card h3{color:#459aff;margin-bottom:12px}
+.card p{font-size:13px;color:#9aadc7;line-height:1.6}
+
+button{
+ background:#197aff;
+ color:white;
+ border:0;
+ padding:13px 18px;
+ border-radius:7px;
+ font-weight:bold;
+ cursor:pointer;
+}
+
+button:hover{background:#0862dc}
+
+.card button{margin-top:18px;width:100%}
+
+.panel{
+ display:none;
+ background:#101e32;
+ border:1px solid #25466e;
+ border-radius:12px;
+ padding:20px;
+ margin-top:25px;
+}
+
+.panel h2{
+ color:#459aff;
+ text-align:center;
+ margin-bottom:20px;
+}
+
+label{
+ display:block;
+ margin:15px 0 7px;
+ color:#bdcde2;
+ font-size:13px;
+}
+
+input,textarea,select{
+ width:100%;
+ padding:13px;
+ background:#081323;
+ color:white;
+ border:1px solid #29466a;
+ border-radius:6px;
+ outline:none;
+ font-size:14px;
+}
+
+input:focus,textarea:focus,select:focus{
+ border-color:#2586ff;
+}
+
+textarea{
+ min-height:100px;
+ resize:vertical;
+}
+
+.submit{
+ width:100%;
+ margin-top:20px;
+}
+
+.back{
+ width:100%;
+ margin-top:10px;
+ background:#273b55;
+}
+
+.admin-button{
+ display:block;
+ margin:30px auto;
+ background:#142943;
+ border:1px solid #328cff;
+}
+
+#success{
+ display:none;
+ background:#102d32;
+ border:1px solid #1b9c83;
+ padding:20px;
+ border-radius:8px;
+ margin-top:20px;
+ text-align:center;
+}
+
+.application-card{
+ background:#081323;
+ border:1px solid #29466a;
+ border-radius:9px;
+ padding:15px;
+ margin-top:15px;
+}
+
+.application-card h3{
+ color:#459aff;
+ margin-bottom:10px;
+}
+
+.application-card p{
+ overflow-wrap:anywhere;
+ margin:9px 0;
+ font-size:13px;
+ color:#bdcde2;
+}
+
+.application-card details{
+ margin-top:12px;
+}
+
+.application-card summary{
+ color:#459aff;
+ cursor:pointer;
+ padding:10px 0;
+}
+
+.status{
+ font-weight:bold;
+ margin:12px 0;
+}
+
+.actions{
+ display:flex;
+ flex-wrap:wrap;
+ gap:7px;
+ margin-top:12px;
+}
+
+.actions button{
+ flex:1;
+ min-width:90px;
+ font-size:12px;
+ padding:11px 7px;
+}
+
+.approve{background:#12865d}
+.reject{background:#b83242}
+.delete{background:#354966}
+
+.logout{
+ width:100%;
+ margin-top:20px;
+ background:#273b55;
+}
+
+.empty{
+ color:#91a7c3;
+ text-align:center;
+ padding:20px;
+}
+
+footer{
+ text-align:center;
+ color:#60748f;
+ padding:25px;
+ font-size:12px;
+ border-top:1px solid #1a2c43;
+ margin-top:40px;
+}
+
+@media(max-width:500px){
+ .cards{grid-template-columns:1fr}
+ .hero h1{font-size:24px}
+ .logo{font-size:25px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="logo">RASE RUSSIA</div>
+ <p>OFFICIAL APPLICATION SYSTEM</p>
+</header>
+
+<section class="hero">
+ <h1>СИСТЕМА <span>ЗАЯВОК</span></h1>
+ <p>
+ Добро пожаловать на портал подачи заявлений проекта Rase Russia.
+ <br>Выберите интересующее направление.
+ </p>
+</section>
+
+<div class="container">
+
+ <h2 class="title">
+ ВЫБЕРИТЕ <span style="color:#328cff">НАПРАВЛЕНИЕ</span>
+ </h2>
+
+ <div class="cards">
+
+  <div class="card">
+   <h3>АДМИНИСТРАЦИЯ</h3>
+   <p>Заявления на вступление в состав администрации проекта.</p>
+   <button onclick="openForm('Администрация')">
+    ПОДАТЬ ЗАЯВКУ
+   </button>
+  </div>
+
+  <div class="card">
+   <h3>ЛИДЕРСКИЙ СОСТАВ</h3>
+   <p>Заявления на должности лидеров государственных организаций и ОПГ.</p>
+   <button onclick="openForm('Лидерский состав')">
+    ПОДАТЬ ЗАЯВКУ
+   </button>
+  </div>
+
+ </div>
+
+ <button class="admin-button" onclick="showAdminLogin()">
+ ⚙ ПАНЕЛЬ АДМИНИСТРАЦИИ
+ </button>
+
+ <!-- ФОРМА ЗАЯВКИ -->
+
+ <form id="application" class="panel">
+
+  <h2 id="formTitle">ЗАЯВКА</h2>
+
+  <label>Ваш игровой NickName</label>
+  <input name="nickname" required placeholder="Player_Name">
+
+  <label>Ваше реальное имя</label>
+  <input name="realname" required placeholder="Ваше имя">
+
+  <label>Ваш возраст</label>
+  <input name="age" type="number" min="14" required placeholder="Возраст">
+
+  <label>Часовой пояс</label>
+  <input name="timezone" required placeholder="+2 от МСК">
+
+  <label>Ваш средний суточный онлайн</label>
+  <input name="online" required placeholder="Например: 3-4 часа">
+
+  <label>На какую должность подаёте заявку?</label>
+  <input name="position" required placeholder="Название должности">
+
+  <label>Имеется ли опыт на подобных должностях?</label>
+  <textarea name="experience" required placeholder="Расскажите о своём опыте..."></textarea>
+
+  <label>Почему мы должны выбрать именно Вас?</label>
+  <textarea name="reason" required placeholder="Ваш ответ..."></textarea>
+
+  <label>Ваша страница VK</label>
+  <input name="vk" required placeholder="Ссылка на VK">
+
+  <label>Дополнительная информация</label>
+  <textarea name="extra" placeholder="Дополнительная информация..."></textarea>
+
+  <button class="submit" type="submit">
+   ОТПРАВИТЬ ЗАЯВКУ
+  </button>
+
+  <button class="back" type="button" onclick="closeForm()">
+   НАЗАД
+  </button>
+
+ </form>
+
+ <div id="success">
+  <h3 style="color:#35d99b">ЗАЯВКА СОХРАНЕНА!</h3>
+  <p style="margin-top:10px;color:#b5c9df">
+   Ваша заявка добавлена в список.
+  </p>
+ </div>
+
+ <!-- ВХОД АДМИНИСТРАТОРА -->
+
+ <div id="adminLogin" class="panel">
+
+  <h2>ADMIN LOGIN</h2>
+
+  <label>Логин администратора</label>
+  <input id="adminUser" placeholder="Введите логин">
+
+  <label>Пароль администратора</label>
+  <input id="adminPass" type="password" placeholder="Введите пароль">
+
+  <p id="loginError" style="color:#ff5555;margin-top:12px"></p>
+
+  <button onclick="loginAdmin()" style="width:100%;margin-top:18px">
+   ВОЙТИ
+  </button>
+
+  <button class="back" onclick="hideAdminLogin()">
+   НАЗАД
+  </button>
+
+ </div>
+
+ <!-- АДМИНСКАЯ ПАНЕЛЬ -->
+
+ <div id="adminPanel" class="panel">
+
+  <h2>ADMIN PANEL</h2>
+
+  <p style="text-align:center;color:#91a7c3;margin-bottom:20px">
+   RASE RUSSIA | УПРАВЛЕНИЕ ЗАЯВКАМИ
+  </p>
+
+  <div id="applicationsList"></div>
+
+  <button class="logout" onclick="logoutAdmin()">
+   ВЫЙТИ ИЗ ПАНЕЛИ
+  </button>
+
+ </div>
+
+</div>
+
+<footer>
+ © 2026 RASE RUSSIA
+ <br>APPLICATION SYSTEM
+</footer>
+
+<script>
+
+let currentType = "";
+let isAdmin = false;
+
+const ADMIN_LOGIN = "admin";
+const ADMIN_PASSWORD = "Rase2026!";
+
+function getApplications(){
+ try{
+  return JSON.parse(localStorage.getItem("raseApplications") || "[]");
+ }catch(e){
+  return [];
+ }
+}
+
+function saveApplications(apps){
+ localStorage.setItem("raseApplications",JSON.stringify(apps));
+}
+
+function openForm(type){
+
+ currentType = type;
+
+ document.getElementById("application").style.display = "block";
+ document.getElementById("formTitle").textContent = "ЗАЯВКА: " + type.toUpperCase();
+
+ document.getElementById("success").style.display = "none";
+
+ document.getElementById("application").scrollIntoView({
+  behavior:"smooth"
+ });
+}
+
+function closeForm(){
+ document.getElementById("application").style.display = "none";
+}
+
+document.getElementById("application").addEventListener("submit",function(e){
+
+ e.preventDefault();
+
+ const formData = new FormData(this);
+ const fields = {};
+
+ formData.forEach((value,key)=>{
+  fields[key] = value.trim();
+ });
+
+ const apps = getApplications();
+
+ apps.push({
+  id:Date.now(),
+  type:currentType,
+  fields:fields,
+  status:"На рассмотрении",
+  date:new Date().toLocaleString("ru-RU")
+ });
+
+ saveApplications(apps);
+
+ this.reset();
+
+ document.getElementById("application").style.display = "none";
+ document.getElementById("success").style.display = "block";
+
+ document.getElementById("success").scrollIntoView({
+  behavior:"smooth"
+ });
+
+});
+
+function showAdminLogin(){
+
+ document.getElementById("application").style.display = "none";
+ document.getElementById("adminPanel").style.display = "none";
+ document.getElementById("success").style.display = "none";
+
+ document.getElementById("adminLogin").style.display = "block";
+ document.getElementById("loginError").textContent = "";
+
+ document.getElementById("adminLogin").scrollIntoView({
+  behavior:"smooth"
+ });
+}
+
+function hideAdminLogin(){
+ document.getElementById("adminLogin").style.display = "none";
+}
+
+function loginAdmin(){
+
+ const user = document.getElementById("adminUser").value;
+ const pass = document.getElementById("adminPass").value;
+
+ if(user === ADMIN_LOGIN && pass === ADMIN_PASSWORD){
+
+  isAdmin = true;
+
+  document.getElementById("adminLogin").style.display = "none";
+  document.getElementById("adminPanel").style.display = "block";
+
+  renderApplications();
+
+  document.getElementById("adminPanel").scrollIntoView({
+   behavior:"smooth"
+  });
+
+ }else{
+
+  document.getElementById("loginError").textContent =
+   "Неверный логин или пароль!";
+
+ }
+}
+
+function renderApplications(){
+
+ if(!isAdmin)return;
+
+ const apps = getApplications();
+ const list = document.getElementById("applicationsList");
+
+ list.innerHTML = "";
+
+ if(apps.length === 0){
+
+  list.innerHTML = '<div class="empty">Заявок пока нет.</div>';
+  return;
+
+ }
+
+ [...apps].reverse().forEach(app=>{
+
+  const card = document.createElement("div");
+  card.className = "application-card";
+
+  const title = document.createElement("h3");
+  title.textContent = app.type;
+
+  const date = document.createElement("p");
+  date.textContent = "Дата подачи: " + app.date;
+
+  const nickname = document.createElement("p");
+  nickname.textContent = "Игровой NickName: " + (app.fields.nickname || "Не указан");
+
+  const status = document.createElement("div");
+  status.className = "status";
+  status.textContent = "Статус: " + app.status;
+
+  if(app.status === "Одобрено"){
+   status.style.color = "#35d99b";
+  }else if(app.status === "Отказано"){
+   status.style.color = "#ff5555";
+  }else{
+   status.style.color = "#ffb347";
+  }
+
+  const details = document.createElement("details");
+  const summary = document.createElement("summary");
+  summary.textContent = "ПОСМОТРЕТЬ ПОЛНУЮ АНКЕТУ";
+  details.appendChild(summary);
+
+  const labels = {
+   nickname:"Игровой NickName",
+   realname:"Реальное имя",
+   age:"Возраст",
+   timezone:"Часовой пояс",
+   online:"Суточный онлайн",
+   position:"Должность",
+   experience:"Опыт",
+   reason:"Почему выбрать именно Вас",
+   vk:"Страница VK",
+   extra:"Дополнительная информация"
+  };
+
+  Object.entries(app.fields).forEach(([key,value])=>{
+
+   const p = document.createElement("p");
+   p.textContent = (labels[key] || key) + ": " + value;
+   details.appendChild(p);
+
+  });
+
+  const actions = document.createElement("div");
+  actions.className = "actions";
+
+  const approve = document.createElement("button");
+  approve.className = "approve";
+  approve.textContent = "ОДОБРИТЬ";
+  approve.onclick = ()=>updateStatus(app.id,"Одобрено");
+
+  const reject = document.createElement("button");
+  reject.className = "reject";
+  reject.textContent = "ОТКАЗАТЬ";
+  reject.onclick = ()=>updateStatus(app.id,"Отказано");
+
+  const remove = document.createElement("button");
+  remove.className = "delete";
+  remove.textContent = "УДАЛИТЬ";
+  remove.onclick = ()=>deleteApplication(app.id);
+
+  actions.append(approve,reject,remove);
+
+  card.append(title,date,nickname,status,details,actions);
+  list.appendChild(card);
+
+ });
+
+}
+
+function updateStatus(id,status){
+
+ const apps = getApplications();
+ const app = apps.find(item=>item.id === id);
+
+ if(app){
+  app.status = status;
+  saveApplications(apps);
+  renderApplications();
+ }
+
+}
+
+function deleteApplication(id){
+
+ if(!confirm("Вы действительно хотите удалить заявку?")){
+  return;
+ }
+
+ const apps = getApplications().filter(item=>item.id !== id);
+
+ saveApplications(apps);
+ renderApplications();
+
+}
+
+function logoutAdmin(){
+
+ isAdmin = false;
+
+ document.getElementById("adminPanel").style.display = "none";
+ document.getElementById("adminUser").value = "";
+ document.getElementById("adminPass").value = "";
+
+ window.scrollTo({top:0,behavior:"smooth"});
+
+}
+
+</script>
+
+</body>
+</html>
